@@ -18,6 +18,7 @@ namespace BackupAlgs.Backup
             StartLine = startLine;
             Console.SetCursorPosition(0, StartLine);
             Thread.Sleep(500);
+
             if (PathTools.PathCheckSource())
             {
                 Console.ForegroundColor = ConsoleColor.Green;
