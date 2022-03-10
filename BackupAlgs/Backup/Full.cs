@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BackupAlgs.Tools;
 
 namespace BackupAlgs.Backup
@@ -24,13 +21,20 @@ namespace BackupAlgs.Backup
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("OK | Destination was accepted");
-                    LogTools.AddNewLog("BACKUP: Successful FULL BACKUP");
+                    Console.WriteLine();
+
+                    StartBackup();
                 }
                 else
                     ErrorHandler.ThrowError("FULL", "Destination path is missing/invalid");
             }
             else
                 ErrorHandler.ThrowError("FULL", "Source path is missing/invalid");
+        }
+
+        public void StartBackup()
+        {
+
         }
     }
 }
