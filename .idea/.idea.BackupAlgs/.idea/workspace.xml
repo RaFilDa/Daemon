@@ -4,15 +4,20 @@
     <projectFile>BackupAlgs/BackupAlgs.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="05866fdd-d85c-4d84-b6fe-a2d8a711c413" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/BackupAlgs/Backup/Full.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BackupAlgs/Backup/Full.cs" afterDir="false" />
-    </list>
+    <list default="true" id="82a4fc0e-66c4-454c-b272-e957760edbc6" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectId" id="26CuFBEtzKMIB3hhvdSsUE84DQ5" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="SWEA" />
+  </component>
+  <component name="ProjectId" id="26CrWbXlCAaQcgr4tL6ndmwl2ix" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -46,22 +51,44 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="05866fdd-d85c-4d84-b6fe-a2d8a711c413" name="Changes" comment="" />
-      <created>1646939786090</created>
+      <changelist id="82a4fc0e-66c4-454c-b272-e957760edbc6" name="Changes" comment="" />
+      <created>1646938447106</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1646939786090</updated>
-      <workItem from="1646939792722" duration="172000" />
+      <updated>1646938447106</updated>
+      <workItem from="1646938453431" duration="2670000" />
+      <workItem from="1646948980061" duration="66000" />
     </task>
+    <task id="LOCAL-00001" summary="jzzggfczvb">
+      <created>1646941787615</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1646941787615</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
-  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="jzzggfczvb" />
+    <option name="LAST_COMMIT_MESSAGE" value="jzzggfczvb" />
   </component>
 </project>

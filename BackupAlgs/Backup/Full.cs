@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using BackupAlgs.Tools;
+using System.IO;
 
 namespace BackupAlgs.Backup
 {
@@ -10,27 +8,51 @@ namespace BackupAlgs.Backup
     {
         private string PathSource = Paths.AllPaths[1];
         private string PathDestination = Paths.AllPaths[2];
-        private int StartLine { get; set; }
 
         public Full(int startLine)
         {
-            StartLine = startLine;
-            Console.SetCursorPosition(0, StartLine);
-            if (PathTools.PathCheckSource())
+            if(BackupTools.BackupCheck("FULL", startLine))
             {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("OK | Source was accepted");
-                if (PathTools.PathCheckDest())
+                try
                 {
+                    StartBackup();
+                    LogTools.AddNewLog("FULL BACKUP SUCCESSFUL");
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("OK | Destination was accepted");
-                    LogTools.AddNewLog("BACKUP: Successful FULL BACKUP");
+                    Console.WriteLine("OK | BACKUP SUCCESSFUL");
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.WriteLine("Press any key to continue");
+                    Console.ReadKey(true);
+                    Console.Clear();
                 }
-                else
-                    ErrorHandler.ThrowError("FULL", "Destination path is missing/invalid");
+                catch
+                {
+                    ErrorHandler.ThrowError("FULL", "BACKUP FAILED");
+                }
             }
-            else
-                ErrorHandler.ThrowError("FULL", "Source path is missing/invalid");
+        }
+
+        private void StartBackup()
+        {
+            BackupTools.NewLists();
+
+            string backupFilePath = PathDestination + @"\FULL_BACKUP\";
+            PathDestination = PathDestination + @"\FULL_BACKUP\" + PathSource.Remove(0, PathSource.LastIndexOf(@"\"));
+
+            Directory.CreateDirectory(PathDestination);
+
+            foreach (string dir in Directory.GetDirectories(PathSource, "*", SearchOption.AllDirectories))
+            {
+                BackupTools.Dirs.Add(dir);
+                Directory.CreateDirectory(dir.Replace(PathSource, PathDestination));
+            }
+
+            foreach (string file in Directory.GetFiles(PathSource, "*.*", SearchOption.AllDirectories))
+            {
+                BackupTools.Files.Add(file);
+                File.Copy(file, file.Replace(PathSource, PathDestination), true);
+            }
+
+            BackupTools.LogFiles(backupFilePath);
         }
     }
 }

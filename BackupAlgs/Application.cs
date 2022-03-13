@@ -27,9 +27,7 @@ namespace BackupAlgs
                 PathTools.GetPaths();
 
             if (!LogTools.LogFileExists())
-            {
                 LogTools.LogFileCreate();
-            }
             else
                 LogTools.GetLogs();
         }

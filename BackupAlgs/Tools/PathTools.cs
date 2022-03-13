@@ -41,7 +41,7 @@ namespace BackupAlgs.Tools
                 }
             }
 
-            if ((path == "") || (!path.Contains(@":\")))
+            if (!path.Contains(@":\"))
                 result = false;
             return result;
         }
@@ -63,7 +63,7 @@ namespace BackupAlgs.Tools
                 }
             }
 
-            if ((path == "") || (!path.Contains(@":\")))
+            if (!path.Contains(@":\"))
                 result = false;
             return result;
         }

@@ -12,6 +12,6 @@ namespace BackupAlgs.Tools
         public static string PathSource = "";
         public static string PathDest = @"C:\Users\Public\Documents\Backups";
 
-        public static string[] AllPaths = { PathLog, PathSource, PathDest };
+        public static string[] AllPaths = { PathLog, PathSource, PathDest};
     }
 }

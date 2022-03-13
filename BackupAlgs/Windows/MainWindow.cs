@@ -1,5 +1,4 @@
 ﻿using System;
-using BackupAlgs.Tools;
 using BackupAlgs.Backup;
 
 namespace BackupAlgs.Windows
@@ -11,18 +10,19 @@ namespace BackupAlgs.Windows
         public string[] options = {
         "FULL Backup",
         "DIFFERENCIAL Backup",
-        "ADDITIONAL Backup",
+        "INCREMENTAL Backup",
         "Set Paths",
         "Show Log",
-        "Rollback",
         };
         public int index = 0;
-        
+        public int MenuHeight { get; set; }
+
         public MainWindow(Application parent, string header)
         {
             Console.Clear();
             Parent = parent;
             Header = header;
+            MenuHeight = options.Length + 3;
         }
 
         public override void Draw()
@@ -59,15 +59,15 @@ namespace BackupAlgs.Windows
             }
             else if (info.Key == ConsoleKey.Enter && index == 0)
             {
-                Full fb = new Full(options.Length + 3);
+                Full fb = new Full(MenuHeight);
             }
             else if (info.Key == ConsoleKey.Enter && index == 1)
             {
-
+                Differential db = new Differential(MenuHeight);
             }
             else if (info.Key == ConsoleKey.Enter && index == 2)
             {
-
+                Incremental ib = new Incremental(MenuHeight);
             }
             else if (info.Key == ConsoleKey.Enter && index == 3)
             {
