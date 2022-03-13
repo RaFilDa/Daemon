@@ -77,8 +77,7 @@ namespace BackupAlgs.Windows
             }
             else if(info.Key == ConsoleKey.Backspace)
             {
-                if(NewPaths[index + 1] != "")
-                    NewPaths[index + 1] = NewPaths[index + 1].Substring(0, NewPaths[index + 1].Length - 1);
+                NewPaths[index + 1] = NewPaths[index + 1].Substring(0, NewPaths[index + 1].Length - 1);
             }
             else
             {
