@@ -4,7 +4,15 @@
     <projectFile>BackupAlgs/BackupAlgs.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="82a4fc0e-66c4-454c-b272-e957760edbc6" name="Changes" comment="" />
+    <list default="true" id="82a4fc0e-66c4-454c-b272-e957760edbc6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BackupAlgs/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BackupAlgs/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackupAlgs/Backup/Differential.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackupAlgs/Backup/Full.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackupAlgs/Backup/Incremental.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackupAlgs/Tools/BackupTools.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BackupAlgs/Tools/BackupTools.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackupAlgs/Windows/LogWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BackupAlgs/Windows/LogWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackupAlgs/Windows/MainWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BackupAlgs/Windows/MainWindow.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,11 +38,11 @@
   </component>
   <component name="RunManager">
     <configuration name="BackupAlgs" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/BackupAlgs/bin/Debug/net5.0/BackupAlgs.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/BackupAlgs/bin/Debug/net5.0" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_EXTERNAL_CONSOLE" value="1" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="PROJECT_PATH" value="$PROJECT_DIR$/BackupAlgs/BackupAlgs.csproj" />
@@ -42,7 +50,7 @@
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
       <option name="PROJECT_KIND" value="DotNetCore" />
-      <option name="PROJECT_TFM" value="" />
+      <option name="PROJECT_TFM" value="net5.0" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -58,6 +66,8 @@
       <updated>1646938447106</updated>
       <workItem from="1646938453431" duration="2670000" />
       <workItem from="1646948980061" duration="66000" />
+      <workItem from="1647203110410" duration="291000" />
+      <workItem from="1647444641562" duration="6901000" />
     </task>
     <task id="LOCAL-00001" summary="jzzggfczvb">
       <created>1646941787615</created>
@@ -66,7 +76,28 @@
       <option name="project" value="LOCAL" />
       <updated>1646941787615</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Filip Changes">
+      <created>1647203124386</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1647203124386</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Filip Changes">
+      <created>1647203138105</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1647203138105</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/.idea.BackupAlgs/.idea/workspace.xml&#10;#&#9;BackupAlgs/Backup/Full.cs&#10;#&#9;BackupAlgs/Windows/PathWindow.cs">
+      <created>1647203344337</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1647203344337</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -89,6 +120,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="jzzggfczvb" />
-    <option name="LAST_COMMIT_MESSAGE" value="jzzggfczvb" />
+    <MESSAGE value="Filip Changes" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/.idea.BackupAlgs/.idea/workspace.xml&#10;#&#9;BackupAlgs/Backup/Full.cs&#10;#&#9;BackupAlgs/Windows/PathWindow.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/.idea.BackupAlgs/.idea/workspace.xml&#10;#&#9;BackupAlgs/Backup/Full.cs&#10;#&#9;BackupAlgs/Windows/PathWindow.cs" />
   </component>
 </project>

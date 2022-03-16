@@ -30,13 +30,13 @@ namespace BackupAlgs.Tools
                 }
                 else
                 {
-                    ErrorHandler.ThrowError("FULL", "Destination path is missing/invalid");
+                    ErrorHandler.ThrowError(backupName, "Destination path is missing/invalid");
                     return false;
                 }
             }
             else
             {
-                ErrorHandler.ThrowError("FULL", "Source path is missing/invalid");
+                ErrorHandler.ThrowError(backupName, "Source path is missing/invalid");
                 return false;
             }
         }

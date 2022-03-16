@@ -1,5 +1,6 @@
 ﻿using System;
 using BackupAlgs.Backup;
+using BackupAlgs.Tools;
 
 namespace BackupAlgs.Windows
 {
@@ -57,17 +58,9 @@ namespace BackupAlgs.Windows
                 if (index < 0)
                     index++;
             }
-            else if (info.Key == ConsoleKey.Enter && index == 0)
+            else if (info.Key == ConsoleKey.Enter && index >= 0 && index < 3)
             {
-                Full fb = new Full(MenuHeight);
-            }
-            else if (info.Key == ConsoleKey.Enter && index == 1)
-            {
-                Differential db = new Differential(MenuHeight);
-            }
-            else if (info.Key == ConsoleKey.Enter && index == 2)
-            {
-                Incremental ib = new Incremental(MenuHeight);
+                Backups.Backup(index);
             }
             else if (info.Key == ConsoleKey.Enter && index == 3)
             {

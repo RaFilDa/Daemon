@@ -26,13 +26,12 @@ namespace BackupAlgs.Windows
             Console.SetCursorPosition(0, 0);
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(Header);
-            Console.WriteLine("-".PadRight(Console.WindowWidth, '-'));
-
-            for (int i = 0; i < Console.WindowHeight - 3; i++)
-            {
-                Console.WriteLine(" ".PadRight(Console.WindowWidth));
-            }
-            Console.SetCursorPosition(0, 2);
+            Console.WriteLine("-".PadRight(Console.WindowWidth-1, '-'));
+            // for (int i = 0; i < Console.WindowHeight - 3; i++)
+            // {
+            //     Console.WriteLine(" ".PadRight(Console.WindowWidth));
+            // }
+            // Console.SetCursorPosition(0, 2);
 
             if(LogTools.Logs.Count > Console.WindowHeight - 5)
             {
@@ -42,7 +41,7 @@ namespace BackupAlgs.Windows
                         Console.ForegroundColor = ConsoleColor.White;
                     else
                         Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.WriteLine(ReversedLogs[i]);
+                    Console.WriteLine(ReversedLogs[i].PadRight(Console.WindowWidth-1,' '));
                 }
             }
             else
@@ -52,10 +51,10 @@ namespace BackupAlgs.Windows
                         Console.ForegroundColor = ConsoleColor.White;
                     else
                         Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.WriteLine(ReversedLogs[i]);
+                    Console.WriteLine(ReversedLogs[i].PadRight(Console.WindowWidth-1,' '));
                 }
             Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("-".PadRight(Console.WindowWidth,'-'));
+            Console.WriteLine("-".PadRight(Console.WindowWidth-1,'-'));
             Console.WriteLine("Enter - Go back");
         }
 
