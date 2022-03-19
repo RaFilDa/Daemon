@@ -27,6 +27,7 @@ namespace BackupAlgs.Backup
                 try
                 {
                     StartBackup(typeBackup, Paths.AllPaths[1], Paths.AllPaths[2]);
+                    LogTools.AddNewLog($"{typeBackup} Backup Successful");
                     Console.WriteLine($"{typeBackup} | BACKUP SUCCESSFUL");
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("OK | BACKUP SUCCESSFUL");

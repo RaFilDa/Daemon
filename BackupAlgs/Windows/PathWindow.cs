@@ -80,7 +80,7 @@ namespace BackupAlgs.Windows
                 if(NewPaths[index + 1] != "")
                     NewPaths[index + 1] = NewPaths[index + 1].Substring(0, NewPaths[index + 1].Length - 1);
             }
-            else
+            else if(info.Key != ConsoleKey.Escape)
             {
                 NewPaths[index + 1] = NewPaths[index + 1] + info.KeyChar;
             }
