@@ -6,7 +6,7 @@ namespace BackupAlgs
     {
         static void Main(string[] args)
         {
-            string version = "RaFilDa Backup - v1.21";
+            string version = "RaFilDa Backup - v1.2";
 
             Console.CursorVisible = false;
             Console.Title = version;
