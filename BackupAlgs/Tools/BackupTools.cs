@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace BackupAlgs.Tools
 {
     public static class BackupTools
     {
-        public static int Retention = 5;
+        public const int RETENTION = 5;
+        public const int PACKAGES = 5;
         public static List<string> Dirs = new List<string>();
         public static List<string> Files = new List<string>();
         public static List<string> NewFiles = new List<string>();
@@ -51,19 +53,19 @@ namespace BackupAlgs.Tools
 
         public static void LoadFiles(string path)
         {
-            using StreamReader sw = new StreamReader(path + @"backup_file_info.txt");
+            using StreamReader sr = new StreamReader(path + @"backup_file_info.txt");
             {
-                sw.ReadLine();
+                sr.ReadLine();
                 string dir = "";
-                while(dir != "Files:")
+                while (dir != "Files:")
                 {
-                    dir = sw.ReadLine();
-                    if(dir != "Files:")
+                    dir = sr.ReadLine();
+                    if (dir != "Files:")
                         Dirs.Add(dir);
                 }
-                while(!sw.EndOfStream)
+                while (!sr.EndOfStream)
                 {
-                    Files.Add(sw.ReadLine());
+                    Files.Add(sr.ReadLine());
                 }
             }
         }
@@ -88,30 +90,66 @@ namespace BackupAlgs.Tools
 
         public static bool CheckForFile(string path)
         {
-            if (!File.Exists(path + @"backup_retention_info.txt"))
+            if (!File.Exists(path + @"info.txt"))
                 return false;
             else
                 return true;
         }
 
-        public static void UpdateFile(string path, int number)
+        public static void UpdateFile(string path, string snapshot, int retention, int? packages, string number)
         {
-            using StreamWriter sw = new StreamWriter(path + @"backup_retention_info.txt");
+            //1st line = last snapshot time
+            //2nd line = RETENTION
+            //3rd line = PACKAGES
+            //4th line = number of backup
+
+            using StreamWriter sw = new StreamWriter(path + @"info.txt");
             {
+                sw.WriteLine(snapshot);
+                sw.WriteLine(retention);
+                sw.WriteLine(packages);
                 sw.WriteLine(number);
                 sw.Close();
             }
         }
 
-        public static int GetInfo(string path)
+        public static string[] GetInfo(string path)
         {
-            string result = ""; 
-            using StreamReader sr = new StreamReader(path + @"backup_retention_info.txt");
+            string[] result = new string[4];
+            int indexer = 0;
+            using StreamReader sr = new StreamReader(path + @"info.txt");
             {
-                result = sr.ReadLine();
+                while (!sr.EndOfStream)
+                {
+                    result[indexer] = sr.ReadLine();
+                    indexer++;
+                }
                 sr.Close();
             }
-            return Convert.ToInt32(result);
+            return result;
+        }
+
+        public static void Pack(string path)
+        {
+            int retention = Convert.ToInt32(GetInfo(path)[1]);
+            if (retention == 1)
+            {
+                DeleteOldest(path);
+                retention++;
+            }
+            UpdateFile(path, DateTime.MinValue.ToString(), retention - 1, PACKAGES, (Convert.ToInt32(GetInfo(path)[3]) + 1).ToString());
+        } 
+
+        public static void DeleteOldest(string path)
+        {
+            List<DirectoryInfo> dirs = new List<DirectoryInfo>();
+            foreach(string dir in Directory.GetDirectories(path))
+            {
+                dirs.Add(new DirectoryInfo(dir));
+            }
+     
+            dirs.Sort((x, y) => x.CreationTime.CompareTo(y.CreationTime));
+            dirs[0].Delete(true);
         }
     }
 }

@@ -35,7 +35,7 @@ namespace BackupAlgs.Backup
                     Console.ReadKey(true);
                     Console.Clear();
                 }
-                catch
+                catch(Exception e)
                 {
                     ErrorHandler.ThrowError(typeBackup, "BACKUP FAILED");
                 }
@@ -45,25 +45,30 @@ namespace BackupAlgs.Backup
         private static void StartBackup(string typeBackup, string pathSource, string pathDestination)
         {
             BackupTools.NewLists();
-
-            //TODO change snapshot to latest files
             
             typeBackup += "_BACKUP";
-            DateTime snapshot = DateTime.MinValue;
 
-            switch (typeBackup)
-            {
-                case "DIFF_BACKUP":
-                    snapshot = DateTime.Now - TimeSpan.FromMinutes(10);
-                    break;
-                case "INC_BACKUP":
-                    snapshot = DateTime.Now - TimeSpan.FromHours(100000);
-                    break;
-            }
-            
-            pathDestination = pathDestination + @$"\{typeBackup}\" + pathSource.Remove(0, pathSource.LastIndexOf("\\"));
+            string infoPath = pathDestination + @$"\{typeBackup}\";
+
+            Directory.CreateDirectory(infoPath);
+
+            if (!BackupTools.CheckForFile(infoPath))
+                BackupTools.UpdateFile(infoPath, DateTime.MinValue.ToString(), BackupTools.RETENTION, typeBackup == "FULL_BACKUP" ? null : BackupTools.PACKAGES, "1");
+
+            pathDestination = pathDestination + @$"\{typeBackup}\" + "BACKUP_" + BackupTools.GetInfo(infoPath)[3] + pathSource.Remove(0, pathSource.LastIndexOf("\\"));
 
             Directory.CreateDirectory(pathDestination);
+
+            if (typeBackup != "FULL_BACKUP")
+            {
+                if (Convert.ToInt32(BackupTools.GetInfo(infoPath)[2]) < BackupTools.PACKAGES)
+                    pathDestination += @"\PACKAGE_" + ((Convert.ToInt32(BackupTools.GetInfo(infoPath)[2]) - 6) * -1) + "\\";
+                else
+                    pathDestination += @"\FULL\";
+                Directory.CreateDirectory(pathDestination);
+            }
+
+            DateTime snapshot = DateTime.Parse(BackupTools.GetInfo(infoPath)[0]);
 
             foreach (string dir in Directory.GetDirectories(pathSource, "*", SearchOption.AllDirectories))
             {
@@ -81,7 +86,13 @@ namespace BackupAlgs.Backup
                 File.Copy(file, file.Replace(pathSource, pathDestination), true);
             }
 
-            BackupTools.LogFiles(pathDestination.Substring(0, pathDestination.LastIndexOf('\\')));
+            BackupTools.UpdateFile(infoPath, DateTime.Now.ToString(), Convert.ToInt32(BackupTools.GetInfo(infoPath)[1]), BackupTools.GetInfo(infoPath)[2] == "" ? null : Convert.ToInt32(BackupTools.GetInfo(infoPath)[2]) - 1, BackupTools.GetInfo(infoPath)[3]);
+
+            if (BackupTools.GetInfo(infoPath)[2] == "0")
+            {
+                BackupTools.Pack(infoPath);
+            }
+            BackupTools.LogFiles(infoPath);
         }
     }
 }
