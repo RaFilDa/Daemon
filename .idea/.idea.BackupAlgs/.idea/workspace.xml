@@ -6,23 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="82a4fc0e-66c4-454c-b272-e957760edbc6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BackupAlgs/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BackupAlgs/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackupAlgs/Backup/Differential.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackupAlgs/Backup/Full.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackupAlgs/Backup/Incremental.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackupAlgs/Tools/BackupTools.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BackupAlgs/Tools/BackupTools.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackupAlgs/Windows/LogWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BackupAlgs/Windows/LogWindow.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BackupAlgs/Windows/MainWindow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BackupAlgs/Windows/MainWindow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BackupAlgs/Backup/Backups.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BackupAlgs/Backup/Backups.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://diff.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="SWEA" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="26CrWbXlCAaQcgr4tL6ndmwl2ix" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -33,6 +32,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -67,7 +67,9 @@
       <workItem from="1646938453431" duration="2670000" />
       <workItem from="1646948980061" duration="66000" />
       <workItem from="1647203110410" duration="291000" />
-      <workItem from="1647444641562" duration="6901000" />
+      <workItem from="1647444641562" duration="7524000" />
+      <workItem from="1647553141986" duration="1472000" />
+      <workItem from="1647804405820" duration="1168000" />
     </task>
     <task id="LOCAL-00001" summary="jzzggfczvb">
       <created>1646941787615</created>
@@ -97,7 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647203344337</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Merged backup to single Algorithm&#10;Changes required">
+      <created>1647451773854</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1647451773854</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,6 +131,7 @@
     <MESSAGE value="jzzggfczvb" />
     <MESSAGE value="Filip Changes" />
     <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/.idea.BackupAlgs/.idea/workspace.xml&#10;#&#9;BackupAlgs/Backup/Full.cs&#10;#&#9;BackupAlgs/Windows/PathWindow.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/.idea.BackupAlgs/.idea/workspace.xml&#10;#&#9;BackupAlgs/Backup/Full.cs&#10;#&#9;BackupAlgs/Windows/PathWindow.cs" />
+    <MESSAGE value="Merged backup to single Algorithm&#10;Changes required" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merged backup to single Algorithm&#10;Changes required" />
   </component>
 </project>
