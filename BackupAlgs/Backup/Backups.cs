@@ -53,7 +53,7 @@ namespace BackupAlgs.Backup
             Directory.CreateDirectory(infoPath);
 
             if (!BackupTools.CheckForFile(infoPath))
-                BackupTools.UpdateFile(infoPath, DateTime.MinValue.ToString(), BackupTools.RETENTION, typeBackup == "FULL_BACKUP" ? null : BackupTools.PACKAGES, "1");
+                BackupTools.UpdateFile(infoPath, DateTime.MinValue.ToString(), BackupTools.RETENTION, typeBackup == "FULL_BACKUP" ? 1 : BackupTools.PACKAGES, "1");
 
             pathDestination = pathDestination + @$"\{typeBackup}\" + "BACKUP_" + BackupTools.GetInfo(infoPath)[3] + pathSource.Remove(0, pathSource.LastIndexOf("\\"));
 
@@ -87,13 +87,13 @@ namespace BackupAlgs.Backup
             }
             
             if(int.Parse(BackupTools.GetInfo(infoPath)[2]) == 5 || typeBackup != "DIFF_BACKUP")
-                BackupTools.UpdateFile(infoPath, DateTime.Now.ToString(), Convert.ToInt32(BackupTools.GetInfo(infoPath)[1]), BackupTools.GetInfo(infoPath)[2] == "" ? null : Convert.ToInt32(BackupTools.GetInfo(infoPath)[2]) - 1, BackupTools.GetInfo(infoPath)[3]);
+                BackupTools.UpdateFile(infoPath, DateTime.Now.ToString(), Convert.ToInt32(BackupTools.GetInfo(infoPath)[1]), Convert.ToInt32(BackupTools.GetInfo(infoPath)[2]) - 1, BackupTools.GetInfo(infoPath)[3]);
             else if(typeBackup == "DIFF_BACKUP")
-                BackupTools.UpdateFile(infoPath, BackupTools.GetInfo(infoPath)[0], Convert.ToInt32(BackupTools.GetInfo(infoPath)[1]), BackupTools.GetInfo(infoPath)[2] == "" ? null : Convert.ToInt32(BackupTools.GetInfo(infoPath)[2]) - 1, BackupTools.GetInfo(infoPath)[3]);
+                BackupTools.UpdateFile(infoPath, BackupTools.GetInfo(infoPath)[0], Convert.ToInt32(BackupTools.GetInfo(infoPath)[1]), Convert.ToInt32(BackupTools.GetInfo(infoPath)[2]) - 1, BackupTools.GetInfo(infoPath)[3]);
 
             if (BackupTools.GetInfo(infoPath)[2] == "0")
             {
-                BackupTools.Pack(infoPath);
+                BackupTools.Pack(infoPath, typeBackup);
             }
             //BackupTools.LogFiles(infoPath);
         }

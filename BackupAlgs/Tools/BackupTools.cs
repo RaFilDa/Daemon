@@ -129,7 +129,7 @@ namespace BackupAlgs.Tools
             return result;
         }
 
-        public static void Pack(string path)
+        public static void Pack(string path, string typeBackup)
         {
             int retention = Convert.ToInt32(GetInfo(path)[1]);
             if (retention == 1)
@@ -137,7 +137,7 @@ namespace BackupAlgs.Tools
                 DeleteOldest(path);
                 retention++;
             }
-            UpdateFile(path, DateTime.MinValue.ToString(), retention - 1, PACKAGES, (Convert.ToInt32(GetInfo(path)[3]) + 1).ToString());
+            UpdateFile(path, DateTime.MinValue.ToString(), retention - 1, typeBackup == "FULL_BACKUP" ? 1 : PACKAGES, (Convert.ToInt32(GetInfo(path)[3]) + 1).ToString());
         } 
 
         public static void DeleteOldest(string path)
