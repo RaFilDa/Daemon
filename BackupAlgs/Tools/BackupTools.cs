@@ -5,16 +5,16 @@ using System.Linq;
 
 namespace BackupAlgs.Tools
 {
-    public static class BackupTools
+    public class BackupTools
     {
-        public const int RETENTION = 5;
-        public const int PACKAGES = 5;
-        public static List<string> Dirs = new List<string>();
-        public static List<string> Files = new List<string>();
-        public static List<string> NewFiles = new List<string>();
-        public static List<string> NewDirs = new List<string>();
+        public int RETENTION = 5;
+        public int PACKAGES = 5;
+        public List<string> Dirs = new List<string>();
+        public List<string> Files = new List<string>();
+        public List<string> NewFiles = new List<string>();
+        public List<string> NewDirs = new List<string>();
 
-        public static bool BackupCheck(string backupName, int startLine)
+        public bool BackupCheck(string backupName, int startLine)
         {
             Console.SetCursorPosition(0, startLine);
             if (PathTools.PathCheckSource())
@@ -43,7 +43,7 @@ namespace BackupAlgs.Tools
             }
         }
 
-        public static void NewLists()
+        public void NewLists()
         {
             Dirs = new List<string>();
             Files = new List<string>();
@@ -51,7 +51,7 @@ namespace BackupAlgs.Tools
             NewFiles = new List<string>();
         }
 
-        public static void LoadFiles(string path)
+        public void LoadFiles(string path)
         {
             using StreamReader sr = new StreamReader(path + @"backup_file_info.txt");
             {
@@ -71,7 +71,7 @@ namespace BackupAlgs.Tools
             }
         }
 
-        public static void LogFiles(string path)
+        public void LogFiles(string path)
         {
             using StreamWriter sw = new StreamWriter(path + @"backup_file_info.txt");
             {
@@ -89,7 +89,7 @@ namespace BackupAlgs.Tools
             }
         }
 
-        public static bool CheckForFile(string path)
+        public bool CheckForFile(string path)
         {
             if (!File.Exists(path + @"info.txt"))
                 return false;
@@ -97,7 +97,7 @@ namespace BackupAlgs.Tools
                 return true;
         }
 
-        public static void UpdateFile(string path, string snapshot, int retention, int? packages, string number)
+        public void UpdateFile(string path, string snapshot, int retention, int? packages, string number)
         {
             //1st line = last snapshot time
             //2nd line = RETENTION
@@ -114,7 +114,7 @@ namespace BackupAlgs.Tools
             }
         }
 
-        public static string[] GetInfo(string path)
+        public string[] GetInfo(string path)
         {
             string[] result = new string[4];
             int indexer = 0;
@@ -130,7 +130,7 @@ namespace BackupAlgs.Tools
             return result;
         }
 
-        public static void Pack(string path, string typeBackup)
+        public void Pack(string path, string typeBackup)
         {
             int retention = Convert.ToInt32(GetInfo(path)[1]);
             if (retention == 1)
@@ -141,7 +141,7 @@ namespace BackupAlgs.Tools
             UpdateFile(path, DateTime.MinValue.ToString(), retention - 1, typeBackup == "FULL_BACKUP" ? 1 : PACKAGES, (Convert.ToInt32(GetInfo(path)[3]) + 1).ToString());
         } 
 
-        public static void DeleteOldest(string path)
+        public void DeleteOldest(string path)
         {
             List<DirectoryInfo> dirs = new List<DirectoryInfo>();
             foreach(string dir in Directory.GetDirectories(path))

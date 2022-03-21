@@ -8,6 +8,8 @@ namespace BackupAlgs.Backup
     {
         public static void Backup(int backup)
         {
+            BackupTools bt = new BackupTools();
+
             string typeBackup = "";
             switch (backup)
             {
@@ -22,7 +24,7 @@ namespace BackupAlgs.Backup
                     break;
             }
             
-            if(BackupTools.BackupCheck(typeBackup, 8))
+            if(bt.BackupCheck(typeBackup, 8))
             {
                 try
                 {
@@ -45,7 +47,9 @@ namespace BackupAlgs.Backup
 
         private static void StartBackup(string typeBackup, string pathSource, string pathDestination)
         {
-            BackupTools.NewLists();
+            BackupTools bt = new BackupTools();
+
+            bt.NewLists();
 
             typeBackup += "_BACKUP";
 
@@ -53,34 +57,29 @@ namespace BackupAlgs.Backup
 
             Directory.CreateDirectory(infoPath);
             
-            if (!BackupTools.CheckForFile(infoPath))
-                BackupTools.UpdateFile(infoPath, DateTime.MinValue.ToString(), BackupTools.RETENTION, typeBackup == "FULL_BACKUP" ? 1 : BackupTools.PACKAGES, "1");
-
-            if (!File.Exists(infoPath + @"backup_file_info.txt"))
-                BackupTools.LogFiles(infoPath);
-            else if(typeBackup != "FULL_BACKUP")
-                BackupTools.LoadFiles(infoPath);
+            if (!bt.CheckForFile(infoPath))
+                bt.UpdateFile(infoPath, DateTime.MinValue.ToString(), bt.RETENTION, typeBackup == "FULL_BACKUP" ? 1 : bt.PACKAGES, "1");
            
-            pathDestination = pathDestination + @$"\{typeBackup}\" + "BACKUP_" + BackupTools.GetInfo(infoPath)[3] + pathSource.Remove(0, pathSource.LastIndexOf("\\"));
+            pathDestination = pathDestination + @$"\{typeBackup}\" + "BACKUP_" + bt.GetInfo(infoPath)[3] + pathSource.Remove(0, pathSource.LastIndexOf("\\"));
 
             Directory.CreateDirectory(pathDestination);
 
             if (typeBackup != "FULL_BACKUP")
             {
-                if (Convert.ToInt32(BackupTools.GetInfo(infoPath)[2]) < BackupTools.PACKAGES)
-                    pathDestination += @"\PACKAGE_" + ((Convert.ToInt32(BackupTools.GetInfo(infoPath)[2]) - 6) * -1) + "\\";
+                if (Convert.ToInt32(bt.GetInfo(infoPath)[2]) < bt.PACKAGES)
+                    pathDestination += @"\PACKAGE_" + ((Convert.ToInt32(bt.GetInfo(infoPath)[2]) - 6) * -1) + "\\";
                 else
                     pathDestination += @"\FULL\";
                 Directory.CreateDirectory(pathDestination);
             }
 
-            DateTime snapshot = DateTime.Parse(BackupTools.GetInfo(infoPath)[0]);
+            DateTime snapshot = DateTime.Parse(bt.GetInfo(infoPath)[0]);
 
             foreach (string dir in Directory.GetDirectories(pathSource, "*", SearchOption.AllDirectories))
             {
                 if(new DirectoryInfo(dir).LastWriteTime <= snapshot)
                     continue;
-                BackupTools.Dirs.Add(dir);
+                bt.Dirs.Add(dir);
                 Directory.CreateDirectory(dir.Replace(pathSource, pathDestination));
             }
 
@@ -88,21 +87,21 @@ namespace BackupAlgs.Backup
             {
                 if(new FileInfo(file).LastWriteTime <= snapshot)
                     continue;
-                BackupTools.Files.Add(file);
+                bt.Files.Add(file);
                 File.Copy(file, file.Replace(pathSource, pathDestination), true);
             }
             
-            if(int.Parse(BackupTools.GetInfo(infoPath)[2]) == 5 || typeBackup != "DIFF_BACKUP")
-                BackupTools.UpdateFile(infoPath, DateTime.Now.ToString(), Convert.ToInt32(BackupTools.GetInfo(infoPath)[1]), Convert.ToInt32(BackupTools.GetInfo(infoPath)[2]) - 1, BackupTools.GetInfo(infoPath)[3]);
+            if(int.Parse(bt.GetInfo(infoPath)[2]) == 5 || typeBackup != "DIFF_BACKUP")
+                bt.UpdateFile(infoPath, DateTime.Now.ToString(), Convert.ToInt32(bt.GetInfo(infoPath)[1]), Convert.ToInt32(bt.GetInfo(infoPath)[2]) - 1, bt.GetInfo(infoPath)[3]);
             else if(typeBackup == "DIFF_BACKUP")
-                BackupTools.UpdateFile(infoPath, BackupTools.GetInfo(infoPath)[0], Convert.ToInt32(BackupTools.GetInfo(infoPath)[1]), Convert.ToInt32(BackupTools.GetInfo(infoPath)[2]) - 1, BackupTools.GetInfo(infoPath)[3]);
+                bt.UpdateFile(infoPath, bt.GetInfo(infoPath)[0], Convert.ToInt32(bt.GetInfo(infoPath)[1]), Convert.ToInt32(bt.GetInfo(infoPath)[2]) - 1, bt.GetInfo(infoPath)[3]);
 
-            if (BackupTools.GetInfo(infoPath)[2] == "0")
+            if (bt.GetInfo(infoPath)[2] == "0")
             {
-                BackupTools.Pack(infoPath, typeBackup);
+                bt.Pack(infoPath, typeBackup);
             }
 
-            BackupTools.LogFiles(infoPath);
+            bt.LogFiles(pathDestination);
         }
     }
 }
