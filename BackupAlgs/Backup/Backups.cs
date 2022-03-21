@@ -52,7 +52,7 @@ namespace BackupAlgs.Backup
             string infoPath = pathDestination + @$"\{typeBackup}\";
 
             Directory.CreateDirectory(infoPath);
-
+            
             if (!BackupTools.CheckForFile(infoPath))
                 BackupTools.UpdateFile(infoPath, DateTime.MinValue.ToString(), BackupTools.RETENTION, typeBackup == "FULL_BACKUP" ? 1 : BackupTools.PACKAGES, "1");
 

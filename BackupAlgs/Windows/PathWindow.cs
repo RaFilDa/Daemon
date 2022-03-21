@@ -56,7 +56,7 @@ namespace BackupAlgs.Windows
 
         public override void HandleKey(ConsoleKeyInfo info)
         {
-            if(info.Key == ConsoleKey.Enter)
+            if(info.Key == ConsoleKey.Enter || info.Key == ConsoleKey.Escape)
             {
                 AddNewPaths();
                 PathTools.PathUpdateFile();
