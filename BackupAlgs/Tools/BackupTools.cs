@@ -67,6 +67,7 @@ namespace BackupAlgs.Tools
                 {
                     Files.Add(sr.ReadLine());
                 }
+                sr.Close();
             }
         }
 

@@ -27,6 +27,7 @@ namespace BackupAlgs.Backup
                 try
                 {
                     StartBackup(typeBackup, Paths.AllPaths[1], Paths.AllPaths[2]);
+                    LogTools.AddNewLog($"{typeBackup} | BACKUP SUCCESFUL");
                     Console.WriteLine($"{typeBackup} | BACKUP SUCCESSFUL");
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("OK | BACKUP SUCCESSFUL");
@@ -45,7 +46,7 @@ namespace BackupAlgs.Backup
         private static void StartBackup(string typeBackup, string pathSource, string pathDestination)
         {
             BackupTools.NewLists();
-            
+
             typeBackup += "_BACKUP";
 
             string infoPath = pathDestination + @$"\{typeBackup}\";
@@ -55,6 +56,11 @@ namespace BackupAlgs.Backup
             if (!BackupTools.CheckForFile(infoPath))
                 BackupTools.UpdateFile(infoPath, DateTime.MinValue.ToString(), BackupTools.RETENTION, typeBackup == "FULL_BACKUP" ? 1 : BackupTools.PACKAGES, "1");
 
+            if (!File.Exists(infoPath + @"backup_file_info.txt"))
+                BackupTools.LogFiles(infoPath);
+            else if(typeBackup != "FULL_BACKUP")
+                BackupTools.LoadFiles(infoPath);
+           
             pathDestination = pathDestination + @$"\{typeBackup}\" + "BACKUP_" + BackupTools.GetInfo(infoPath)[3] + pathSource.Remove(0, pathSource.LastIndexOf("\\"));
 
             Directory.CreateDirectory(pathDestination);
@@ -95,7 +101,8 @@ namespace BackupAlgs.Backup
             {
                 BackupTools.Pack(infoPath, typeBackup);
             }
-            //BackupTools.LogFiles(infoPath);
+
+            BackupTools.LogFiles(infoPath);
         }
     }
 }
